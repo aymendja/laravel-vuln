@@ -32,6 +32,14 @@
             />
 
             <x-vuln-card 
+                title="Server-Side Template Injection (SSTI)" 
+                severity="Critical" 
+                cve="CWE-1336" 
+                description="Make the server compile and execute your own code by controlling the Blade template source itself." 
+                link="{{ route('vulns.show', ['slug' => 'ssti']) }}"
+            />
+
+            <x-vuln-card 
                 title="Mass Assignment" 
                 severity="High" 
                 cve="A01:2021" 
