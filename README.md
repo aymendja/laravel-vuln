@@ -1,38 +1,169 @@
-🛡️ Laravel Vulnerability Lab (Educational Project) An interactive educational web application built with Laravel, designed for understanding, demonstrating, and testing common web security vulnerabilities. The platform provides dual-mode labs featuring both a Vulnerable Mode for hands-on exploitation practice and a Secure Mode demonstrating robust defensive architecture.
+# 🛡️ Laravel Vulnerability Lab
 
-🚀 Features & Labs **SQL** Injection Authentication Bypass Lab (/lab/sql-injection)
+**An Educational Web Security Project Built with Laravel**
 
-Vulnerable Mode: Implements raw, concatenated **SQL** queries (**SELECT** * **FROM** users **WHERE** email = '$email' **AND** password = '$password'), making it vulnerable to authentication bypass techniques using **SQL** comments (-- ).
+Laravel Vulnerability Lab is an educational web application designed to demonstrate, understand, and test common web security vulnerabilities in a controlled environment.
 
-Secure Mode: Utilizes secure Eloquent **ORM** patterns combined with standard password_verify() hashing to completely mitigate injection risks.
+The project provides two testing modes for each vulnerability:
 
-🛠️ Tech Stack Backend: Laravel (**PHP**)
-Before you begin, ensure your local machine meets the following requirements:
-- **PHP:** >= 8.2 (with extensions like BCMath, Ctype, Fileinfo, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML)
-- **Composer:** Latest version
+- **Vulnerable Mode:** Demonstrates insecure implementations and allows users to understand how common vulnerabilities can be exploited.
+- **Secure Mode:** Demonstrates secure coding practices and defensive techniques to prevent these vulnerabilities.
+
+The goal is to bridge the gap between theoretical cybersecurity knowledge and practical web application security.
+
+---
+
+## 🚀 Vulnerability Labs
+
+### 1. SQL Injection (SQLi)
+
+**Route:** `/lab/sql-injection`
+
+An authentication lab demonstrating how insecure SQL query construction can lead to authentication bypass.
+
+| Mode | Description |
+|---|---|
+| Vulnerable Mode | Uses raw SQL queries with direct user input concatenation, allowing SQL Injection attacks. |
+| Secure Mode | Uses Laravel Eloquent ORM and secure password hashing to prevent SQL Injection and authentication bypass. |
+
+**Vulnerable implementation example:**
+
+```php
+SELECT * FROM users
+WHERE email = '$email'
+AND password = '$password'
+```
+
+**Security concepts covered:**
+- SQL Injection fundamentals
+- Authentication bypass
+- SQL comments (`--`)
+- Raw SQL query vulnerabilities
+- Eloquent ORM
+- Secure password hashing
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| PHP | Backend programming language |
+| Laravel | Backend framework |
+| MySQL | Relational database |
+| Blade | Server-side templating engine |
+| Tailwind CSS | Frontend styling |
+| Composer | PHP dependency management |
+| Node.js & NPM | Frontend asset management |
+
+---
+
+## 📋 Requirements
+
+Before installing the project, make sure your local environment meets the following requirements:
+
+- **PHP:** >= 8.2
+- **Composer:** Latest stable version
 - **Database:** MySQL or MariaDB
-- **Node.js & NPM:** (Optional, if frontend assets need compilation)
+- **Node.js & NPM:** Required if frontend assets need compilation.
 
-Database: MySQL
 
-Frontend: Blade Templates & Tailwind **CSS**
+---
 
-⚙️ Step-by-Step Local Setup Guide for Follow these instructions carefully to clone and run the repository successfully on your local machine:
+## ⚙️ Installation & Setup
 
-Step 1: Clone the Repository Open your terminal and clone the project from GitHub, then navigate into the project directory:
+Follow these steps to run the project locally.
 
-Bash git clone [https://github.com/aymendja/laravel-vuln.git](https://github.com/aymendja/laravel-vuln.git) cd laravel-vuln-lab
+### Step 1: Clone the Repository
 
-Step 2: Install **PHP** Dependencies Install all required project packages using Composer:
+```bash
+git clone https://github.com/aymendja/laravel-vuln.git
 
-Bash composer install Step 3: Configure Environment Variables Copy the example environment configuration file to create your local .env file:
+cd laravel-vuln
+```
 
-Bash cp .env.example .env Generate a unique application encryption key:
+### Step 2: Install PHP Dependencies
 
-Bash php artisan key:generate Step 4: Setup Database Credentials Open the .env file in your code editor and update your local MySQL database configurations:
+```bash
+composer install
+```
 
-Code snippet DB_CONNECTION=mysql DB_HOST=**127**.0.0.1 DB_PORT=**3306** DB_DATABASE=laravel_vuln_lab DB_USERNAME=root DB_PASSWORD=your_database_password Step 5: Run Migrations :
+### Step 3: Configure Environment Variables
 
-Bash php artisan migrate Step 6: Start the Local Development Server Launch the built-in **PHP** development server:
+Create your local environment configuration file:
 
-Bash php artisan serve
+```bash
+cp .env.example .env
+```
+
+Generate the Laravel application encryption key:
+
+```bash
+php artisan key:generate
+```
+
+### Step 4: Configure the Database
+
+Create a MySQL database named:
+
+```sql
+CREATE DATABASE laravel_vuln_lab;
+```
+
+Update the database configuration in your `.env` file:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_vuln_lab
+DB_USERNAME=root
+DB_PASSWORD=your_database_password
+```
+
+Replace the database username and password with your local MySQL credentials.
+
+### Step 5: Run Database Migrations
+
+```bash
+php artisan migrate
+```
+
+### Step 6: Start the Development Server
+
+```bash
+php artisan serve
+```
+
+The application will be available at:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## ⚠️ Security Disclaimer
+
+**This project is developed strictly for educational purposes.**
+
+The vulnerable implementations are intentionally insecure and are designed to demonstrate common web application security weaknesses.
+
+- Run the application only in a local or isolated testing environment.
+- Never deploy vulnerable configurations to a production server.
+- Do not use the techniques demonstrated here against systems without explicit authorization.
+
+---
+
+## 🎯 Project Objectives
+
+- Understand common web application vulnerabilities.
+- Explore how insecure code creates security weaknesses.
+- Practice identifying and exploiting vulnerabilities in a controlled environment.
+- Learn how to implement secure coding practices.
+- Understand the differences between vulnerable and secure application architectures.
+
+---
+
+
+*Built for learning, experimenting, and understanding web application security.*
