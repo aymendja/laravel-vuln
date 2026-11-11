@@ -26,13 +26,6 @@ An authentication lab demonstrating how insecure SQL query construction can lead
 | Vulnerable Mode | Uses raw SQL queries with direct user input concatenation, allowing SQL Injection attacks. |
 | Secure Mode | Uses Laravel Eloquent ORM and secure password hashing to prevent SQL Injection and authentication bypass. |
 
-**Vulnerable implementation example:**
-
-```php
-SELECT * FROM users
-WHERE email = '$email'
-AND password = '$password'
-```
 
 **Security concepts covered:**
 - SQL Injection fundamentals
@@ -126,7 +119,7 @@ Replace the database username and password with your local MySQL credentials.
 ### Step 5: Run Database Migrations
 
 ```bash
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
 
 ### Step 6: Start the Development Server
