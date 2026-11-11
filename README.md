@@ -149,6 +149,7 @@ No need to install PHP, Composer, or MySQL on your machine. Docker provides all 
 >
 > ```bash
 > sudo usermod -aG docker $USER
+> newgrp docker
 > ```
 >
 > Until then, prefix every `docker` command with `sudo`.
