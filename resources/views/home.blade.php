@@ -40,6 +40,14 @@
             />
 
             <x-vuln-card 
+                title="Path Traversal" 
+                severity="High" 
+                cve="CWE-22" 
+                description="Use ../ sequences in a filename to escape the intended folder and read files the app never meant to expose." 
+                link="{{ route('vulns.show', ['slug' => 'path-traversal']) }}"
+            />
+
+            <x-vuln-card 
                 title="Mass Assignment" 
                 severity="High" 
                 cve="A01:2021" 
