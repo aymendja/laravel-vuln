@@ -47,8 +47,16 @@
                 link="{{ route('vulns.show', ['slug' => 'path-traversal']) }}"
             />
 
-            <x-vuln-card 
-                title="Mass Assignment" 
+            <x-vuln-card
+                title="Unrestricted File Upload"
+                severity="Critical"
+                cve="CWE-434"
+                description="Upload a script disguised as an image and get the server to execute it, then see how validation and private storage stop it."
+                link="{{ route('vulns.file-upload') }}"
+            />
+
+            <x-vuln-card
+                title="Mass Assignment"
                 severity="High" 
                 cve="A01:2021" 
                 description="Exploit unprotected model attributes to alter critical user privileges via HTTP requests." 
