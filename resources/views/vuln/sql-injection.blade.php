@@ -32,7 +32,7 @@
             <h3 class="text-sm font-mono text-white font-bold">Standard Login Form (Insecure)</h3>
         </div>
 
-        <form action="{{ route('lab.sql-login', ['type' => 'vulnerable']) }}" method="POST" class="space-y-4">
+        <form action="{{ route('vulns.sql-login', ['type' => 'vulnerable']) }}" method="POST" class="space-y-4">
             @csrf
             <div class="space-y-1">
                 <label class="block text-xs font-mono text-slate-400">Email Address:</label>
@@ -57,7 +57,7 @@
             <p class="text-xs text-slate-400">Try the same payload here—it will fail safely.</p>
         </div>
 
-        <form action="{{ route('lab.sql-login', ['type' => 'secure']) }}" method="POST" class="space-y-4">
+        <form action="{{ route('vulns.sql-login', ['type' => 'secure']) }}" method="POST" class="space-y-4">
             @csrf
             <div class="space-y-1">
                 <label class="block text-xs font-mono text-slate-400">Email Address:</label>

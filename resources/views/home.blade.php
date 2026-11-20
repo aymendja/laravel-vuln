@@ -20,7 +20,7 @@
                 severity="Critical" 
                 cve="A03:2021" 
                 description="Bypass input sanitization and manipulate raw database queries to extract unauthorized records." 
-                link="{{ route('vulns.show', ['slug' => 'sql-injection']) }}"
+                link="{{ route('vulns.sql-injection') }}"
             />
 
             <x-vuln-card 
@@ -28,7 +28,7 @@
                 severity="High" 
                 cve="A03:2021-XSS" 
                 description="Inject and execute arbitrary client-side JavaScript payloads through unescaped Blade views." 
-                link="{{ route('vulns.show', ['slug' => 'xss']) }}"
+                link="{{ route('vulns.xss') }}"
             />
 
             <x-vuln-card 
@@ -36,7 +36,7 @@
                 severity="Critical" 
                 cve="CWE-1336" 
                 description="Make the server compile and execute your own code by controlling the Blade template source itself." 
-                link="{{ route('vulns.show', ['slug' => 'ssti']) }}"
+                link="{{ route('vulns.ssti') }}"
             />
 
             <x-vuln-card 
@@ -44,7 +44,7 @@
                 severity="High" 
                 cve="CWE-22" 
                 description="Use ../ sequences in a filename to escape the intended folder and read files the app never meant to expose." 
-                link="{{ route('vulns.show', ['slug' => 'path-traversal']) }}"
+                link="{{ route('vulns.path-traversal') }}"
             />
 
             <x-vuln-card
@@ -60,7 +60,7 @@
                 severity="High" 
                 cve="A01:2021" 
                 description="Exploit unprotected model attributes to alter critical user privileges via HTTP requests." 
-                link="{{ route('vulns.show', ['slug' => 'mass-assignment']) }}"
+                link="#"
             />
 
         </div>

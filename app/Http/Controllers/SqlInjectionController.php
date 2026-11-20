@@ -8,6 +8,13 @@ use App\Models\User;
 
 class SqlInjectionController extends Controller
 {
+    public function index()
+    {
+        return view('vuln.show', [
+            'slug' => 'sql-injection',
+            'viewPath' => 'vuln.sql-injection',
+        ]);
+    }
     public function login(Request $request, $type)
     {
         $email = $request->input('email');

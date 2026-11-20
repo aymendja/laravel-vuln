@@ -11,11 +11,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-// Must be declared BEFORE the generic /vulns/{slug} route
-Route::get('/vulns/xss', [XssController::class, 'index'])->name('vulns.xss');
-Route::get('/vulns/ssti', [SstiController::class, 'index'])->name('vulns.ssti');
-Route::get('/vulns/path-traversal', [PathTraversalController::class, 'index'])->name('vulns.path-traversal');
-Route::get('/vulns/file-upload', [FileUploadController::class, 'index'])->name('vulns.file-upload');
-Route::post('/vulns/file-upload', [FileUploadController::class, 'store'])->name('vulns.file-upload.store');
-Route::get('/vulns/{slug}',[VulnerabilityController::class, 'show'])->name('vulns.show');
-Route::post('/lab/sql-login/{type}', [SqlInjectionController::class, 'login'])->name('lab.sql-login');
+Route::prefix('vulns')->name('vulns.')->group(function () {
+    Route::get('/sql-injection', [SqlInjectionController::class, 'index'])->name('sql-injection');
+    Route::get('/xss', [XssController::class, 'index'])->name('xss');
+    Route::get('/ssti', [SstiController::class, 'index'])->name('ssti');
+    Route::get('/path-traversal', [PathTraversalController::class, 'index'])->name('path-traversal');
+    Route::get('/file-upload', [FileUploadController::class, 'index'])->name('file-upload');
+    Route::post('/file-upload', [FileUploadController::class, 'store'])->name('file-upload.store');
+    Route::post('/sql-login/{type}', [SqlInjectionController::class, 'login'])->name('sql-login');
+});
