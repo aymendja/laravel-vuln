@@ -30,7 +30,7 @@ class SqlInjectionController extends Controller
             // Secure query using Eloquent and password_verify
             $foundUser = User::where('email', $email)->first();
 
-            if ($foundUser && password_verify($password, $foundUser->password)) {
+            if ($foundUser && $foundUser->password === $password) {
                 $user = $foundUser;
             } else {
                 $user = null;
