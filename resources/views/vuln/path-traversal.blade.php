@@ -26,10 +26,7 @@
             </p>
             <p>Target: read the flag stored <span class="text-red-300">outside</span> that folder, or the app's <span class="text-red-300">.env</span> file.</p>
         </div>
-        <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-xs text-amber-300">
-            ⚠️ Level 1 and Level 2 can read any file the web server user can access. Keep this lab local and
-            never expose it to the internet.
-        </div>
+        
         <div class="flex flex-wrap gap-2 text-xs font-mono">
             <a href="#level1" class="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20">Level 1 &middot; Easy</a>
             <a href="#level2" class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 hover:bg-amber-500/20">Level 2 &middot; Filtered</a>
