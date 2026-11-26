@@ -55,14 +55,6 @@
                 link="{{ route('vulns.file-upload') }}"
             />
 
-            <x-vuln-card
-                title="Mass Assignment"
-                severity="High" 
-                cve="A01:2021" 
-                description="Exploit unprotected model attributes to alter critical user privileges via HTTP requests." 
-                link="#"
-            />
-
         </div>
 
     </div>
