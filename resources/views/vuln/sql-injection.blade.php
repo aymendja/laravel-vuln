@@ -16,16 +16,17 @@
 
     @if(session('success'))
         <div class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-xl p-4 font-mono text-xs">
-             {{ session('success') }}
+            {{ session('success') }}
         </div>
     @endif
 
     @if(session('error'))
         <div class="bg-red-500/10 border border-red-500/30 text-red-300 rounded-xl p-4 font-mono text-xs">
-             {{ session('error') }}
+            {{ session('error') }}
         </div>
     @endif
 
+    {{-- ===================== Vulnerable Mode ===================== --}}
     <div class="bg-[#0a0a0a] border border-red-500/30 rounded-2xl p-6 space-y-6 max-w-xl mx-auto shadow-xl">
         <div class="space-y-2 text-center">
             <span class="text-xs font-mono px-2 py-1 rounded bg-red-500/20 text-red-400 border border-red-500/30">Vulnerable</span>
@@ -48,8 +49,21 @@
                 Login via Vulnerable Code
             </button>
         </form>
+
+        <details class="text-xs font-mono text-slate-400">
+            <summary class="cursor-pointer text-slate-300 hover:text-white">Show vulnerable code</summary>
+            <pre class="mt-3 bg-[#030303] border border-white/10 rounded-xl p-4 overflow-x-auto text-[11px] text-red-300">@verbatim
+// Controller (Vulnerable)
+$query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+$users = DB::select($query);
+@endverbatim</pre>
+            <p class="mt-3 text-slate-400 leading-relaxed">
+                User input is concatenated directly into the SQL string, allowing payloads with quotes and SQL comments to alter query logic.
+            </p>
+        </details>
     </div>
 
+    {{-- ===================== Secure Mode ===================== --}}
     <div class="bg-[#0a0a0a] border border-emerald-500/30 rounded-2xl p-6 space-y-6 max-w-xl mx-auto shadow-xl">
         <div class="space-y-2 text-center">
             <span class="text-xs font-mono px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Secure</span>
@@ -73,5 +87,16 @@
                 Login via Secure Code
             </button>
         </form>
+
+        <details class="text-xs font-mono text-slate-400">
+            <summary class="cursor-pointer text-slate-300 hover:text-white">Show secure code</summary>
+            <pre class="mt-3 bg-[#030303] border border-white/10 rounded-xl p-4 overflow-x-auto text-[11px] text-emerald-300">@verbatim
+// Controller (Secure)
+$foundUser = User::where('email', $email)->first();
+@endverbatim</pre>
+            <p class="mt-3 text-slate-400 leading-relaxed">
+                Eloquent binds parameters safely instead of concatenating raw SQL strings, and password verification checks the stored hash rather than comparing plain text.
+            </p>
+        </details>
     </div>
 </div>
